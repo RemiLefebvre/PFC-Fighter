@@ -54,6 +54,7 @@ html * {
     background-color: green;
     height: 100%;
     width: 66%;
+    transition: 1s;
   }
   #header .point {
     color: yellow;
@@ -88,7 +89,8 @@ html * {
   #main .fighter .userAndChoose .choose .pfc .pfcimg {
     border-radius: 5px;
   }
-  #main .fighter .userbody, #main .fighter .computerbody {
+  #main .fighter .computerbody,
+  #main .fighter .userbody {
     bottom: 10px;
     width: 80px;
     height: 120px;
@@ -102,7 +104,7 @@ html * {
     font-style: italic;
     background-color: white;
     border-radius: 15px;
-    width: 40%;
+    width: 30%;
     margin-right: 10px;
     padding: 5px;
   }
@@ -119,10 +121,38 @@ html * {
     box-shadow: 0;
   }
   50% {
-    box-shadow: 0 0 0px 1px yellow;
+    box-shadow: 0 0 0 1px yellow;
   }
   100% {
     box-shadow: 0;
+  }
+}
+@media (min-width: 700px) {
+  #header {
+    margin-top: 10px;
+  }
+  #header .name .vs {
+    width: 70px;
+  }
+
+  #main .fighter .computerbody,
+  #main .fighter .userbody {
+    width: 120px;
+    height: 250px;
+  }
+  #main .fighter .computerAndCit .citBender p {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  #header .name .vs {
+    width: 100px;
+  }
+
+  #main .fighter .computerbody,
+  #main .fighter .userbody {
+    width: 140px;
+    height: 290px;
   }
 }
 

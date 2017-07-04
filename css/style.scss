@@ -19,7 +19,7 @@ html {
   body {
     background-image: url("../img/bgi.jpg");
     background-size: cover;
-    background-position:  bottom;
+    background-position: bottom;
 
     figure {
       margin: 0;
@@ -39,6 +39,7 @@ html {
         color: yellow;
         text-shadow: 0 0 1px black;
       }
+
       .vs {
         width: 50px;
         position: absolute;
@@ -48,8 +49,6 @@ html {
     }
 
     .lifebars {
-
-
       .lifebar {
         background-color: red;
         width: 30%;
@@ -61,6 +60,7 @@ html {
           background-color: green;
           height: 100%;
           width: 66%;
+          transition: 1s;
         }
       }
     }
@@ -70,21 +70,22 @@ html {
       font-weight: bold;
       margin: 0 10px;
       text-shadow: 0 0 1px black;
-      p{
+
+      p {
         margin-bottom: 0;
       }
     }
   }
 
   #main {
-    .chooseAndCit {
+    .chooseAndCit {}
 
-    }
-    .fighter{
+    .fighter {
       position: absolute;
       bottom: 20px;
       width: 100%;
-      .userAndChoose{
+
+      .userAndChoose {
         .choose {
           display: flex;
           margin-left: 10px;
@@ -99,22 +100,23 @@ html {
             height: 40*1.3px;
             margin-left: 18px;
             border-radius: 5px;
-            .pfcimg{
-              border-radius: 5px;
 
+            .pfcimg {
+              border-radius: 5px;
             }
           }
         }
-
       }
-      .userbody,.computerbody{
+
+      .computerbody,
+      .userbody {
         bottom: 10px;
         width: 80px;
         height: 120px;
       }
-      .computerAndCit{
-        .citBender{
-          // display: none;
+
+      .computerAndCit {
+        .citBender {
           position: absolute;
           right: 0;
           z-index: 2;
@@ -123,15 +125,17 @@ html {
           font-style: italic;
           background-color: white;
           border-radius: 15px;
-          width: 40%;
+          width: 30%;
           margin-right: 10px;
           padding: 5px;
-          p{
+
+          p {
             margin-bottom: 0;
           }
         }
-        .computerbody{
-          img{
+
+        .computerbody {
+          img {
             width: 160%;
             transform: rotateY(180deg);
           }
@@ -140,12 +144,64 @@ html {
     }
   }
 }
-
 @keyframes brillance {
-  0%{box-shadow: 0}
+  0% {
+    box-shadow: 0;
+  }
 
-  50%{box-shadow: 0 0 0px 1px yellow}
+  50% {
+    box-shadow: 0 0 0 1px yellow;
+  }
 
-  100%{box-shadow: 0}
+  100% {
+    box-shadow: 0;
+  }
 }
 //end media queries 500w
+@media (min-width:700px) {
+  #header {
+    margin-top: 10px;
+
+    .name {
+      .vs {
+        width: 70px;
+      }
+    }
+  }
+
+  #main {
+    .fighter {
+      .computerbody,
+      .userbody {
+        width: 120px;
+        height: 250px;
+      }
+      .computerAndCit {
+        .citBender {
+          p{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width:1200px) {
+  #header {
+    .name {
+      .vs {
+        width: 100px;
+      }
+    }
+  }
+
+  #main {
+    .fighter {
+      .computerbody,
+      .userbody {
+        width: 140px;
+        height: 290px;
+      }
+    }
+  }
+}
