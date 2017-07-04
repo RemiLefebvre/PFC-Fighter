@@ -5,14 +5,14 @@ html {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
-  height: 100vh;
+  height: 105vh;
 }
 body *,
 html * {
   visibility: hidden;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 478px) {
   * {
     visibility: inherit !important;
   }
@@ -20,7 +20,7 @@ html * {
   body {
     background-image: url("../img/bgi.jpg");
     background-size: cover;
-    background-position: 0 10%;
+    background-position: bottom;
   }
   body figure {
     margin: 0;
@@ -53,7 +53,7 @@ html * {
   #header .lifebars .lifebar #greenuser {
     background-color: green;
     height: 100%;
-    width: 90%;
+    width: 66%;
   }
   #header .point {
     color: yellow;
@@ -65,19 +65,35 @@ html * {
     margin-bottom: 0;
   }
 
-  #main .chooseAndCit .choose {
+  #main .fighter {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+  }
+  #main .fighter .userAndChoose .choose {
     display: flex;
     margin-left: 10px;
   }
-  #main .chooseAndCit .choose .pfc {
+  #main .fighter .userAndChoose .choose .pfc {
+    margin-bottom: 10px;
+    animation: brillance;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
     width: 32.5px;
     height: 52px;
     margin-left: 18px;
-  }
-  #main .chooseAndCit .choose .pfc .pfcimg {
     border-radius: 5px;
   }
-  #main .chooseAndCit .citBender {
+  #main .fighter .userAndChoose .choose .pfc .pfcimg {
+    border-radius: 5px;
+  }
+  #main .fighter .userbody, #main .fighter .computerbody {
+    bottom: 10px;
+    width: 80px;
+    height: 120px;
+  }
+  #main .fighter .computerAndCit .citBender {
     position: absolute;
     right: 0;
     z-index: 2;
@@ -90,16 +106,23 @@ html * {
     margin-right: 10px;
     padding: 5px;
   }
-  #main .chooseAndCit .citBender p {
+  #main .fighter .computerAndCit .citBender p {
     margin-bottom: 0;
   }
-  #main .fighter .userbody, #main .fighter .computerbody {
-    width: 80px;
-    height: 120px;
-  }
-  #main .fighter .computerbody img {
+  #main .fighter .computerAndCit .computerbody img {
     width: 160%;
     transform: rotateY(180deg);
+  }
+}
+@keyframes brillance {
+  0% {
+    box-shadow: 0;
+  }
+  50% {
+    box-shadow: 0 0 0px 1px yellow;
+  }
+  100% {
+    box-shadow: 0;
   }
 }
 

@@ -5,13 +5,13 @@ html {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
-  height: 100vh;
+  height: 105vh;
 
   * {
     visibility: hidden;
   }
 }
-@media (min-width:500px) {
+@media (min-width:478px) {
   * {
     visibility: inherit!important;
   }
@@ -19,7 +19,7 @@ html {
   body {
     background-image: url("../img/bgi.jpg");
     background-size: cover;
-    background-position: 0 10%;
+    background-position:  bottom;
 
     figure {
       margin: 0;
@@ -60,7 +60,7 @@ html {
         #greenuser {
           background-color: green;
           height: 100%;
-          width: 90%;
+          width: 66%;
         }
       }
     }
@@ -78,49 +78,74 @@ html {
 
   #main {
     .chooseAndCit {
-      .choose {
-        display: flex;
-        margin-left: 10px;
-        .pfc {
-          width: 25*1.3px;
-          height: 40*1.3px;
-          margin-left: 18px;
-          .pfcimg{
-            border-radius: 5px;
 
-          }
-        }
-      }
-      .citBender{
-        // display: none;
-        position: absolute;
-        right: 0;
-        z-index: 2;
-        font-size: 12px;
-        font-weight: bold;
-        font-style: italic;
-        background-color: white;
-        border-radius: 15px;
-        width: 40%;
-        margin-right: 10px;
-        padding: 5px;
-        p{
-          margin-bottom: 0;
-        }
-      }
     }
     .fighter{
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      .userAndChoose{
+        .choose {
+          display: flex;
+          margin-left: 10px;
+
+          .pfc {
+            margin-bottom: 10px;
+            animation: brillance;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            width: 25*1.3px;
+            height: 40*1.3px;
+            margin-left: 18px;
+            border-radius: 5px;
+            .pfcimg{
+              border-radius: 5px;
+
+            }
+          }
+        }
+
+      }
       .userbody,.computerbody{
+        bottom: 10px;
         width: 80px;
         height: 120px;
       }
-      .computerbody{
-        img{
-          width: 160%;
-          transform: rotateY(180deg);
+      .computerAndCit{
+        .citBender{
+          // display: none;
+          position: absolute;
+          right: 0;
+          z-index: 2;
+          font-size: 12px;
+          font-weight: bold;
+          font-style: italic;
+          background-color: white;
+          border-radius: 15px;
+          width: 40%;
+          margin-right: 10px;
+          padding: 5px;
+          p{
+            margin-bottom: 0;
+          }
+        }
+        .computerbody{
+          img{
+            width: 160%;
+            transform: rotateY(180deg);
+          }
         }
       }
     }
   }
+}
+
+@keyframes brillance {
+  0%{box-shadow: 0}
+
+  50%{box-shadow: 0 0 0px 1px yellow}
+
+  100%{box-shadow: 0}
 }
 //end media queries 500w
