@@ -93,6 +93,10 @@ html {
       }
       .citBender{
         // display: none;
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        font-size: 12px;
         font-weight: bold;
         font-style: italic;
         background-color: white;
@@ -102,6 +106,18 @@ html {
         padding: 5px;
         p{
           margin-bottom: 0;
+        }
+      }
+    }
+    .fighter{
+      .userbody,.computerbody{
+        width: 80px;
+        height: 120px;
+      }
+      .computerbody{
+        img{
+          width: 160%;
+          transform: rotateY(180deg);
         }
       }
     }

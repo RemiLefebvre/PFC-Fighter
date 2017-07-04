@@ -78,6 +78,10 @@ html * {
     border-radius: 5px;
   }
   #main .chooseAndCit .citBender {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    font-size: 12px;
     font-weight: bold;
     font-style: italic;
     background-color: white;
@@ -88,6 +92,14 @@ html * {
   }
   #main .chooseAndCit .citBender p {
     margin-bottom: 0;
+  }
+  #main .fighter .userbody, #main .fighter .computerbody {
+    width: 80px;
+    height: 120px;
+  }
+  #main .fighter .computerbody img {
+    width: 160%;
+    transform: rotateY(180deg);
   }
 }
 
