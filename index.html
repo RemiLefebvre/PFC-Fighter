@@ -77,23 +77,17 @@
   </header>
 
   <main id="main">
-    <!-- CHOOSE & CITATION -->
-    <div class="row chooseAndCit justify-content-between">
 
-
-    </div>
-
-
-      <!-- FIGHTER -->
+    <!-- FIGHTER -->
     <div class="row fighter d-flex justify-content-around">
 
       <!-- USER BODY -->
       <div class="userAndChoose">
         <!-- CHOOSE -->
         <div class="choose">
-          <figure class="pfc" ><img class="pfcimg" src="img/stone.jpg" alt=""></figure>
-          <figure class="pfc" ><img class="pfcimg" src="img/paper.jpg" alt=""></figure>
-          <figure class="pfc" ><img class="pfcimg" src="img/cisor.jpg" alt=""></figure>
+          <figure class="pfc" onclick='choiceUser("stone")'><img class="pfcimg" src="img/stone.jpg" alt=""></figure>
+          <figure class="pfc" onclick='choiceUser("paper")'><img class="pfcimg" src="img/paper.jpg" alt=""></figure>
+          <figure class="pfc" onclick='choiceUser("cisor")'><img class="pfcimg" src="img/cisor.jpg" alt=""></figure>
         </div>
 
         <figure class="userbody"><img id="userBody" src="img/scorpion.gif" alt="user"></figure>
@@ -110,7 +104,7 @@
         <div class="citBender">
           <p id="citBender">La loi de Brannigan c'est comme l'amour de Brannigan : dur et rapide.</p>
         </div>
-        <figure class="computerbody mt-auto"><img id="computerBody" src="img/computer.gif" alt="computer"></figure>
+        <figure class="computerbody mt-auto"><img id="computerBody" src="img/computertest.gif" alt="computer"></figure>
       </div>
 
 
@@ -118,7 +112,154 @@
   </main>
 
 
+  <script type="text/javascript">
+    // USER NAME
+    // var user = prompt("PSEUDO");
+    // user.length<9 ? document.getElementById("username").innerHTML= user.toUpperCase(): user =prompt("Déconne pas")
 
+
+    // CHOICE USER
+    var choice = "";
+    function choiceUser(a) {
+      choice = a;
+      choiceComputer();
+    }
+
+    // CHOICE COMPUTER
+    function choiceComputer() {
+      var pfc = ["stone", "paper", "cisor"]
+      var choiceComputer = Math.floor(Math.random() * 3);
+      choiceComputer = pfc[choiceComputer]
+      console.log(choiceComputer);
+      console.log(choice);
+      comparer(choice, choiceComputer);
+    }
+
+
+    //FIGHT
+    function comparer(user, computer) {
+      if (user === computer) {
+        console.log("Egalité");
+      }
+
+      else if (user === "stone") {
+        // remplace image user par stone
+        if (computer === "cisor") {
+          console.log("stone gagne");
+          benderLoose();
+          // remplace image ordi par cisor
+
+        } else {
+          console.log("paper gagne");
+          benderWin();
+          // remplace image ordi par paper
+        }
+      }
+
+      else if (user === "paper") {
+        // remplace image user par paper
+        if (computer === "stone") {
+          console.log("paper gagne");
+          benderLoose();
+          // remplace image ordi par stone
+
+        } else {
+          console.log("cisor gagnent");
+          benderWin();
+
+          // remplace image ordi par cisor
+        }
+      }
+
+      else if (user === "cisor") {
+        // remplace image user par cisor
+        if (computer === "stone") {
+          console.log("stone gagne");
+          benderWin();
+          // remplace image ordi par pierre
+        } else {
+          console.log("cisor gagnent");
+          benderLoose();
+          // remplace image ordi par paper
+
+        }
+      }
+    }
+
+    // POINT
+    var pointUser=0;
+    var pointComputer=0;
+    function point(){
+
+    }
+
+    // LIFE BAR
+    var userLifeBar=100;
+    var computerLifeBar=100;
+
+    function userBar(){
+      userLifeBar -= 20;
+      document.getElementById("greenuser").style.width= userLifeBar+"%";
+      console.log(userLifeBar);
+      console.log(computerLifeBar);
+
+    }
+    function computerBar(){
+      computerLifeBar -= 20;
+      document.getElementById("greencomputer").style.width= computerLifeBar+"%";
+      console.log(userLifeBar);
+      console.log(computerLifeBar);
+    }
+
+
+
+
+    // TEMPO SPEAK
+    function speak(){
+      document.getElementById("citBender").style.display="block";
+      setTimeout(function(){ document.getElementById("citBender").style.display="none";}, 3000);;
+    }
+
+    // BENDER WIN
+    var benderSpeak = "";
+    var joke = ["Qu'est ce que j'ai gagné ? du fric?", "Comme on dit la vie continue.. sauf pour vous ! HA Ha ha!","*Programme de triche validé* Hun? qui à dit ca?","J'ai l'impression de me battre contre un enfant HA ha!","Tes plus nul qu'une huitre...","On peux me mettre face à quelqu'un de meilleur?"]
+    function benderWin(){
+      benderSpeak = joke[Math.floor(Math.random() * joke.length)]
+      console.log(benderSpeak);
+      document.getElementById("citBender").innerHTML=benderSpeak;
+
+      // timer
+      speak();
+
+      // Lifebar
+      userBar();
+
+      // If total bender win
+      if(userLifeBar==0){
+        document.getElementById("computerBody").src="img/computerwin.gif";
+        document.getElementById("citBender").innerHTML= "J'ai rien vue passer HAhahaaa";
+      }
+
+    }
+
+    // BENDER LOOSE
+    var sad = ["J'avais pas envie de gagner ce coup ci..","Ringard!","Menfou..","L'arbritre avait le soleil dans les yeux!","Mon programme de triche a buggé vous devez me redonner une autre chance!","Mammifère!"]
+    function benderLoose(){
+      benderSpeak = sad[Math.floor(Math.random() * sad.length)]
+      console.log(benderSpeak);
+      document.getElementById("citBender").innerHTML=benderSpeak;
+
+      // timer
+      speak();
+
+      // Lifebar
+      computerBar();
+
+      // if total user win
+      if(userLifeBar==0){
+      }
+    }
+  </script>
 
 
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

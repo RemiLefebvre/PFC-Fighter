@@ -59,8 +59,9 @@ html {
         #greenuser {
           background-color: green;
           height: 100%;
-          width: 66%;
+          width: 100%;
           transition: 1s;
+          padding: 0 0 !important;
         }
       }
     }
@@ -116,7 +117,7 @@ html {
       }
 
       .computerAndCit {
-        .citBender {
+        #citBender {
           position: absolute;
           right: 0;
           z-index: 2;
@@ -128,16 +129,13 @@ html {
           width: 30%;
           margin-right: 10px;
           padding: 5px;
-
-          p {
-            margin-bottom: 0;
-          }
+          display: none;
+          margin-bottom: 0;
         }
 
         .computerbody {
           img {
             width: 160%;
-            transform: rotateY(180deg);
           }
         }
       }
@@ -159,6 +157,7 @@ html {
 }
 //end media queries 500w
 @media (min-width:700px) {
+
   #header {
     margin-top: 10px;
 
@@ -168,18 +167,25 @@ html {
       }
     }
   }
-
   #main {
     .fighter {
+      .userAndChoose{
+        .choose{
+          .pfc{
+            width: 50px;
+            height: 72px;
+          }
+        }
+      }
       .computerbody,
       .userbody {
         width: 120px;
         height: 250px;
       }
       .computerAndCit {
-        .citBender {
+        #citBender {
+          font-size: 20px;
           p{
-            font-size: 20px;
           }
         }
       }
@@ -199,7 +205,7 @@ html {
     .fighter {
       .computerbody,
       .userbody {
-        width: 140px;
+        width: 170px;
         height: 290px;
       }
     }
