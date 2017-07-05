@@ -89,6 +89,10 @@ html * {
   }
   #main .fighter .userAndChoose .choose .pfc .pfcimg {
     border-radius: 5px;
+    cursor: pointer;
+  }
+  #main .fighter .userAndChoose .choose .pfc .pfcimg:hover {
+    box-shadow: 0 0 6px 1px yellow;
   }
   #main .fighter .computerbody,
   #main .fighter .userbody {
@@ -120,7 +124,7 @@ html * {
     box-shadow: 0;
   }
   50% {
-    box-shadow: 0 0 0 1px yellow;
+    box-shadow: 0 0 6px 1px yellow;
   }
   100% {
     box-shadow: 0;

@@ -104,6 +104,10 @@ html {
 
             .pfcimg {
               border-radius: 5px;
+              cursor: pointer;
+              &:hover{
+                box-shadow: 0 0 6px 1px yellow;
+              }
             }
           }
         }
@@ -148,7 +152,7 @@ html {
   }
 
   50% {
-    box-shadow: 0 0 0 1px yellow;
+    box-shadow: 0 0 6px 1px yellow;
   }
 
   100% {
