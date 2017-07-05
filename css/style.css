@@ -64,6 +64,7 @@ html * {
     text-shadow: 0 0 1px black;
   }
   #header .point p {
+    font-size: 34px;
     margin-bottom: 0;
   }
 
