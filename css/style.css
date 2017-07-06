@@ -74,6 +74,21 @@ html * {
     font-family: "8bit";
   }
 
+  #main .fightreplay h2 {
+    display: none;
+    z-index: 4;
+    background-color: black;
+    color: white;
+    padding: 5px 10px 7px 10px;
+    font-family: "8bit";
+    border-radius: 9px;
+    border: 1px solid yellow;
+    cursor: pointer;
+  }
+  #main .fightreplay h2:hover {
+    color: #000;
+    background-color: white;
+  }
   #main .fighter {
     position: absolute;
     bottom: 20px;
@@ -127,7 +142,7 @@ html * {
     right: 200px;
   }
   #main .fighter .computerAndCit #computerBodyFig {
-    right: 100px;
+    right: 15%;
   }
 }
 @keyframes brillance {

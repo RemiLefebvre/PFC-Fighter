@@ -89,7 +89,23 @@ html {
   }
 
   #main {
-    .chooseAndCit {}
+    .fightreplay {
+      h2{
+        display: none;
+        z-index: 4;
+        background-color:  black;
+        color: white;
+        padding: 5px 10px 7px 10px;
+        font-family: "8bit";
+        border-radius: 9px;
+        border: 1px solid yellow;
+        cursor: pointer;
+        &:hover{
+          color: #000;
+          background-color: white;
+        }
+      }
+    }
 
     .fighter {
       position: absolute;
@@ -152,7 +168,7 @@ html {
           right: 200px;
         }
         #computerBodyFig{
-          right: 100px;
+          right: 15%;
         }
       }
     }

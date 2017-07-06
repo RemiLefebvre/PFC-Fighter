@@ -25,6 +25,7 @@
 
 <body>
 
+
   <!-- HEADER @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
   <header id="header" class="container">
 
@@ -40,7 +41,7 @@
       </div>
 
       <!-- COMPUTER -->
-      <h3 id="computername">COMPUTER</h3>
+      <h3 id="computername">BENDER</h3>
     </div>
 
 
@@ -52,8 +53,6 @@
         <div id="greenuser">
         </div>
       </div>
-
-
 
 
       <!-- COMPUTER -->
@@ -76,7 +75,12 @@
     </div>
   </header>
 
+
+    <!-- MAIN @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
   <main id="main">
+    <div class="row fightreplay d-flex justify-content-around">
+      <h2 id="replay" onclick="replayGame()">Rejouer</h2>
+    </div>
 
     <!-- FIGHTER -->
     <div class="row fighter d-flex justify-content-around">
@@ -84,7 +88,7 @@
       <!-- USER BODY -->
       <div class="userAndChoose">
         <!-- CHOOSE -->
-        <div class="choose">
+        <div id="pfc" class="choose">
           <figure class="pfc" onclick='choiceUser("stone")'><img class="pfcimg" src="img/stone.jpg" alt=""></figure>
           <figure class="pfc" onclick='choiceUser("paper")'><img class="pfcimg" src="img/paper.jpg" alt=""></figure>
           <figure class="pfc" onclick='choiceUser("cisor")'><img class="pfcimg" src="img/cisor.jpg" alt=""></figure>
@@ -104,7 +108,7 @@
         <div class="citBender">
           <p id="citBender">La loi de Brannigan c'est comme l'amour de Brannigan : dur et rapide.</p>
         </div>
-        <figure id="computerBodyFig" class="computerbody mt-auto"><img id="computerBody" src="img/computer1.gif" alt="computer"></figure>
+        <figure id="computerBodyFig" class="computerbody mt-auto"><img id="computerBody" src="img/computer.gif" alt="computer"></figure>
       </div>
 
 
@@ -113,9 +117,9 @@
 
 
   <script type="text/javascript">
-    // USER NAME
-    var username = prompt("PSEUDO");
-    username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
+    // // USER NAME
+    // var username = prompt("PSEUDO");
+    // username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
 
 
     // CHOICE USER
@@ -237,15 +241,47 @@
       }
     }
 
+    // REPLAY
+    function replayButton(){
+      document.getElementById("replay").style.display="block";
+      document.getElementById("pfc").style.display="none";
+    }
+    function replayGame(){
+      document.getElementById("pfc").style.display="flex";
+
+      speak();
+      userLifeBar==0 ? document.getElementById("citBender").innerHTML="Prêt pour une Nième raclé ? HAhahaaa":document.getElementById("citBender").innerHTML="Balle de chauffe términée? On joue vraiment maintenant?";
+
+      document.getElementById("replay").style.display="none";
+
+      document.getElementById("greenuser").style.width= "100%";
+      document.getElementById("greencomputer").style.width= "100%";
+      userLifeBar=100;
+      computerLifeBar=100;
+
+      pointUser=0;
+      pointComputer=0;
+      document.getElementById("computerPoint").innerHTML = pointComputer;
+      document.getElementById("userPoint").innerHTML = pointUser;
+
+
+      document.getElementById("computerBody").src="img/computer.gif";
+      document.getElementById("computerBodyFig").style.right=15+ "%";
+
+
+    }
+
+
+    // WELCOME
+    document.getElementById("citBender").innerHTML=username +".. c'est mérovingien ?..";
+    speak();
+
 
     // EQUAL
     function equality(){
       document.getElementById("citBender").innerHTML="EGALITE";
       speak();
     }
-
-    document.getElementById("citBender").innerHTML=username +".. c'est quoi ce nom de mérovingien ?.. Ringard";
-    speak();
 
     // BENDER WIN
     var benderSpeak = "";
@@ -266,6 +302,8 @@
 
       // If total bender win
       if(userLifeBar==0){
+        replayButton();
+
         document.getElementById("computerBody").src="img/computerwin.gif";
         document.getElementById("citBender").innerHTML= "J'ai rien vue passer HAhahaaa";
       }
@@ -295,22 +333,32 @@
       // if total user win
       if(computerLifeBar==0){
         leave();
+        replayButton();
       }
     }
 
 
     // LEAVE
-    var moving=200;
+    var moving=15;
     function leave(){
       document.getElementById("computerBody").src="img/computerloose1.gif";
-      setInterval(function(){
-        console.log("oui");
-      if(moving !== -300){
-        moving --;
-        document.getElementById("computerBodyFig").style.right=moving + "px";
-      }}
-      ,10);
+      var myVar = setInterval(function(){ myTimer() }, 100);
 
+      function myTimer(){
+        console.log("interval moving");
+        if(userLifeBar==100 && computerLifeBar==100){
+          clearInterval(myVar);
+          moving =15;
+        }
+        else if(moving !== -15){
+        moving -= 0.5;
+        document.getElementById("computerBodyFig").style.right=moving + "%";
+        }
+        else {
+          clearInterval(myVar);
+          moving =15;
+        }
+      }
     }
 
   </script>
