@@ -104,7 +104,7 @@
         <div class="citBender">
           <p id="citBender">La loi de Brannigan c'est comme l'amour de Brannigan : dur et rapide.</p>
         </div>
-        <figure class="computerbody mt-auto"><img id="computerBody" src="img/computer.gif" alt="computer"></figure>
+        <figure id="computerBodyFig" class="computerbody mt-auto"><img id="computerBody" src="img/computer1.gif" alt="computer"></figure>
       </div>
 
 
@@ -114,8 +114,8 @@
 
   <script type="text/javascript">
     // USER NAME
-    // var user = prompt("PSEUDO");
-    // user.length<9 ? document.getElementById("username").innerHTML= user.toUpperCase(): user =prompt("Déconne pas")
+    var username = prompt("PSEUDO");
+    username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
 
 
     // CHOICE USER
@@ -222,9 +222,19 @@
 
 
     // TEMPO SPEAK
+    var timer = true;
     function speak(){
-      document.getElementById("citBender").style.display="block";
-      setTimeout(function(){ document.getElementById("citBender").style.display="none";}, 3000);;
+      if (timer == true) {
+        document.getElementById("citBender").style.display="block";
+        timer=false;
+        setTimeout(function(){
+          document.getElementById("citBender").style.display="none";
+          timer=true
+        }, 2500);;
+      }
+      else{
+        document.getElementById("citBender").innerHTML="Doucement humain.. Tes aussi rapide au lit ?";
+      }
     }
 
 
@@ -233,6 +243,9 @@
       document.getElementById("citBender").innerHTML="EGALITE";
       speak();
     }
+
+    document.getElementById("citBender").innerHTML=username +".. c'est quoi ce nom de mérovingien ?.. Ringard";
+    speak();
 
     // BENDER WIN
     var benderSpeak = "";
@@ -275,10 +288,31 @@
       // Point for user
       pointForUser();
 
+      // Last chance
+      if(computerLifeBar==20){
+      }
+
       // if total user win
       if(computerLifeBar==0){
+        leave();
       }
     }
+
+
+    // LEAVE
+    var moving=200;
+    function leave(){
+      document.getElementById("computerBody").src="img/computerloose1.gif";
+      setInterval(function(){
+        console.log("oui");
+      if(moving !== -300){
+        moving --;
+        document.getElementById("computerBodyFig").style.right=moving + "px";
+      }}
+      ,10);
+
+    }
+
   </script>
 
 

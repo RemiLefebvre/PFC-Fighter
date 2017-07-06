@@ -12,6 +12,10 @@ html * {
   visibility: hidden;
 }
 
+@font-face {
+  font-family: "8bit";
+  src: url("../font/8-BIT.TTF");
+}
 @media (min-width: 478px) {
   * {
     visibility: inherit !important;
@@ -36,6 +40,7 @@ html * {
     font-size: 30px;
     color: yellow;
     text-shadow: 0 0 1px black;
+    font-family: "8bit";
   }
   #header .name .vs {
     width: 50px;
@@ -66,6 +71,7 @@ html * {
   #header .point p {
     font-size: 34px;
     margin-bottom: 0;
+    font-family: "8bit";
   }
 
   #main .fighter {
@@ -116,8 +122,12 @@ html * {
     display: none;
     margin-bottom: 0;
   }
-  #main .fighter .computerAndCit .computerbody img {
-    width: 160%;
+  #main .fighter .computerAndCit .computerbody {
+    position: absolute;
+    right: 200px;
+  }
+  #main .fighter .computerAndCit #computerBodyFig {
+    right: 100px;
   }
 }
 @keyframes brillance {
