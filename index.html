@@ -89,9 +89,9 @@
       <div class="userAndChoose">
         <!-- CHOOSE -->
         <div id="pfc" class="choose">
-          <figure class="pfc" onclick='choiceUser("stone")'><img class="pfcimg" src="img/stone.jpg" alt="pierre"></figure>
-          <figure class="pfc" onclick='choiceUser("paper")'><img class="pfcimg" src="img/paper.jpg" alt="feuille"></figure>
-          <figure class="pfc" onclick='choiceUser("cisor")'><img class="pfcimg" src="img/cisor.jpg" alt="ciseaux"></figure>
+          <figure class="pfc stone" onclick='choiceUser("stone")'><img class="pfcimg stone" src="img/stone.jpg" alt="pierre"></figure>
+          <figure class="pfc paper" onclick='choiceUser("paper")'><img class="pfcimg paper" src="img/paper.jpg" alt="feuille"></figure>
+          <figure class="pfc cisor" onclick='choiceUser("cisor")'><img class="pfcimg cisor" src="img/cisor.jpg" alt="ciseaux"></figure>
         </div>
 
         <figure class="userbody"><img id="userBody" src="img/zero.gif" alt="user"></figure>
@@ -132,8 +132,30 @@
     // CHOICE USER
     var choice = "";
     function choiceUser(a) {
-      choice = a;
-      choiceComputer();
+      if(timer==true){
+        choice = a;
+        choiceComputer();
+
+        // HIDE ALL
+        var allPfcimg = document.getElementsByClassName("pfcimg");
+        var allPfc = document.getElementsByClassName("pfc");
+        for(i=0;i<3;i++){
+        allPfcimg[i].style.opacity = 0.1;
+        allPfc[i].style.opacity = 0.1;
+        }
+
+        // EXEPTED ONE
+        var exepted = document.getElementsByClassName(choice);
+        exepted[0].style.opacity = 1;
+        exepted[1].style.opacity = 1;
+
+        // REVISIBLE ALL
+        setTimeout(function(){
+          for(j=0;j<3;j++){
+            allPfcimg[j].style.opacity = 1;
+            allPfc[j].style.opacity = 1;}
+        },2000)
+      }
     }
 
     // CHOICE COMPUTER
@@ -144,7 +166,7 @@
       console.log("computer: "+choiceComputer);
       console.log("user: " +choice);
       document.getElementById("computerHand"+choiceComputer).style.display = "block";
-      setTimeout(function(){document.getElementById("computerHand"+choiceComputer).style.display = "none";},1000)
+      setTimeout(function(){document.getElementById("computerHand"+choiceComputer).style.display = "none";},2000)
       comparer(choice, choiceComputer);
     }
 
@@ -295,7 +317,7 @@
       speak();
       if (nEqual=== 3) {
         document.getElementById("citBender").innerHTML="ENCORE !!? Je pensais pas être aussi bête que toi HAhaha";
-        nEqual=0
+        nEqual=1;
       }
       else {
         document.getElementById("citBender").innerHTML="EGALITE";

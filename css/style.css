@@ -108,12 +108,10 @@ html * {
     height: 52px;
     margin-left: 18px;
     border-radius: 5px;
-  }
-  #main .fighter .userAndChoose .choose .pfc .pfcimg {
-    border-radius: 5px;
+    overflow: hidden;
     cursor: pointer;
   }
-  #main .fighter .userAndChoose .choose .pfc .pfcimg:hover {
+  #main .fighter .userAndChoose .choose .pfc:hover {
     box-shadow: 0 0 6px 1px yellow;
   }
   #main .fighter .computerbody,
