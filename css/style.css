@@ -148,11 +148,23 @@ html * {
     position: absolute;
     z-index: 4;
     right: 55%;
-    bottom: 120px;
+    bottom: 15%;
     transform: scasleX(90px);
   }
   #main .fighter .computerAndCit #ballfig #ball {
     display: none;
+  }
+  #main .fighter .computerAndCit .computerHandFig {
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px grey;
+    right: 35%;
+    width: 32.5px;
+    height: 52px;
+    display: none;
+  }
+  #main .fighter .computerAndCit .computerHandFig .computerHand {
+    border-radius: 5px;
   }
 }
 @keyframes brillance {
@@ -186,14 +198,25 @@ html * {
   #main .fighter .computerAndCit #citBender {
     font-size: 20px;
   }
+  #main .fighter .computerAndCit .computerHandFig {
+    width: 50px;
+    height: 72px;
+  }
 }
 @media (min-width: 1200px) {
   #header .name .vs {
     width: 100px;
   }
 
+  #main .fighter #ballfig {
+    bottom: 30% !important;
+  }
   #main .fighter .computerbody,
   #main .fighter .userbody {
+    width: 170px;
+    height: 290px;
+  }
+  #main .fighter .computerHandFig {
     width: 170px;
     height: 290px;
   }

@@ -171,18 +171,28 @@ html {
           right: 15%;
           #computerbody{
             background-color: black;
-
           }
         }
         #ballfig{
           position: absolute;
           z-index: 4;
           right: 55%;
-          bottom: 120px;
+          bottom: 15%;
           transform: scasleX(90px);
           #ball{
             display: none;
-
+          }
+        }
+        .computerHandFig{
+          position: absolute;
+          border-radius: 5px;
+          box-shadow: 0 0 3px 1px grey;
+          right: 35%;
+          width: 25*1.3px;
+          height: 40*1.3px;
+          display: none;
+          .computerHand{
+            border-radius: 5px;
           }
         }
       }
@@ -235,6 +245,10 @@ html {
           p{
           }
         }
+        .computerHandFig{
+          width: 50px;
+          height: 72px;
+        }
       }
     }
   }
@@ -250,8 +264,15 @@ html {
 
   #main {
     .fighter {
+      #ballfig{
+        bottom: 30%!important;
+      }
       .computerbody,
       .userbody {
+        width: 170px;
+        height: 290px;
+      }
+      .computerHandFig{
         width: 170px;
         height: 290px;
       }
