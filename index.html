@@ -24,6 +24,13 @@
 </head>
 
 <body>
+  <div id="modalbg">
+    <div class="welcome">
+      <h1>PFC <br> FIGHTER</h1>
+      <input id="modalName" type="text" name="" value="NAME">
+      <input onclick="closeModal()" type="button" name="" value="FIGHT">
+    </div>
+  </div>
 
 
   <!-- HEADER @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -135,26 +142,7 @@
       if(timer==true){
         choice = a;
         choiceComputer();
-
-        // HIDE ALL
-        var allPfcimg = document.getElementsByClassName("pfcimg");
-        var allPfc = document.getElementsByClassName("pfc");
-        for(i=0;i<3;i++){
-        allPfcimg[i].style.opacity = 0.1;
-        allPfc[i].style.opacity = 0.1;
-        }
-
-        // EXEPTED ONE
-        var exepted = document.getElementsByClassName(choice);
-        exepted[0].style.opacity = 1;
-        exepted[1].style.opacity = 1;
-
-        // REVISIBLE ALL
-        setTimeout(function(){
-          for(j=0;j<3;j++){
-            allPfcimg[j].style.opacity = 1;
-            allPfc[j].style.opacity = 1;}
-        },2000)
+        hideChoice();
       }
     }
 
@@ -221,6 +209,30 @@
       }
     }
 
+      // HIDE CHOICE EXEPTED ONE
+    function hideChoice(){
+      // HIDE ALL
+      var allPfcimg = document.getElementsByClassName("pfcimg");
+      var allPfc = document.getElementsByClassName("pfc");
+      for(i=0;i<3;i++){
+      allPfcimg[i].style.opacity = 0;
+      allPfc[i].style.opacity = 0;
+      }
+
+      // EXEPTED ONE
+      var exepted = document.getElementsByClassName(choice);
+      exepted[0].style.opacity = 1;
+      exepted[1].style.opacity = 1;
+
+      // REVISIBLE ALL
+      setTimeout(function(){
+        for(j=0;j<3;j++){
+          allPfcimg[j].style.opacity = 1;
+          allPfc[j].style.opacity = 1;}
+      },2000)
+
+    }
+
     // POINT
     var pointUser=0;
     var pointComputer=0;
@@ -279,6 +291,7 @@
     function replayGame(){
       document.getElementById("pfc").style.display="flex";
 
+      fight();
       speak();
       userLifeBar==0 ? document.getElementById("citBender").innerHTML="Prêt pour une Nième raclé ? HAhahaaa":document.getElementById("citBender").innerHTML="Balle de chauffe términée? On joue vraiment maintenant?";
 
@@ -302,11 +315,16 @@
 
 
     // WELCOME
-    // // USER NAME
-    var username = prompt("PSEUDO");
-    username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
-    document.getElementById("citBender").innerHTML=username +".. c'est mérovingien ?..";
-    speak();
+    // USER NAME
+    function closeModal(){
+      document.getElementById("modalbg").style.display ="none";
+
+      var username = document.getElementById("modalName").value;
+      username.length<10 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
+      document.getElementById("citBender").innerHTML=username +".. c'est mérovingien ?..";
+      speak();
+
+    }
 
 
 
@@ -361,7 +379,7 @@
     }
 
     // BENDER LOOSE
-    var sad = ["J'avais pas envie de gagner ce coup ci..","Ringard!","Menfou..","L'arbritre avait le soleil dans les yeux!","Mon programme de triche a buggé vous devez me redonner une autre chance!","Mammifère!"]
+    var sad = ["J'avais pas envie de gagner ce coup ci..","Ringard!","Menfou..","L'arbritre avait le soleil dans les yeux!","Mon programme de triche a buggé vous devez me redonner une autre chance!","Mammifère!","Et mon cul c'est du téflon?!"]
     function benderLoose(){
       benderSpeak = sad[Math.floor(Math.random() * sad.length)]
       console.log(benderSpeak);
@@ -375,11 +393,6 @@
 
       // Point for user
       pointForUser();
-
-
-      // Last chance
-      if(computerLifeBar==20){
-      }
 
       // if total user win
       if(computerLifeBar==0){
