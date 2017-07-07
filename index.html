@@ -317,7 +317,7 @@
     // USER NAME
     function closeModal(){
       document.getElementById("modalbg").style.display ="none";
-
+      window.scrollTo(0, 0);
       var username = document.getElementById("modalName").value;
       username.length<10 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
       document.getElementById("citBender").innerHTML=username +".. c'est mérovingien ?..";
