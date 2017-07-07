@@ -152,7 +152,6 @@
     //FIGHT
     function comparer(user, computer) {
       if (user === computer) {
-        console.log("Egalité");
         equality();
       }
 
@@ -290,18 +289,18 @@
 
 
     // EQUAL
-    var equal=0;
+    var nEqual= 1;
     function equality(){
+      console.log("Egalité");
       speak();
-      if (equal<= 2) {
-        equal++;
-        document.getElementById("citBender").innerHTML="EGALITE";
+      if (nEqual=== 3) {
+        document.getElementById("citBender").innerHTML="ENCORE !!? Je pensais pas être aussi bête que toi HAhaha";
+        nEqual=0
       }
       else {
-        document.getElementById("citBender").innerHTML="ENCORE !!? Je pensais pas être aussi bête que toi HAhaha";
-        equal=0
+        document.getElementById("citBender").innerHTML="EGALITE";
+        nEqual++;
       }
-
     }
 
     // BENDER WIN
