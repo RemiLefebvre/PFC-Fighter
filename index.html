@@ -94,7 +94,7 @@
           <figure class="pfc" onclick='choiceUser("cisor")'><img class="pfcimg" src="img/cisor.jpg" alt=""></figure>
         </div>
 
-        <figure class="userbody"><img id="userBody" src="img/scorpion.gif" alt="user"></figure>
+        <figure class="userbody"><img id="userBody" src="img/zero.gif" alt="user"></figure>
       </div>
 
       <!-- FIGHT EFFECT -->
@@ -108,7 +108,11 @@
         <div class="citBender">
           <p id="citBender">La loi de Brannigan c'est comme l'amour de Brannigan : dur et rapide.</p>
         </div>
-        <figure id="computerBodyFig" class="computerbody mt-auto"><img id="computerBody" src="img/computer.gif" alt="computer"></figure>
+        <figure id="computerBodyFig" class="computerbody mt-auto"><img id="computerBody" src="img/computer.gif" alt="computer">
+        </figure>
+        <figure id="ballfig">
+          <img id="ball" src="img/ballinfini.gif" alt="">
+        </figure>
       </div>
 
 
@@ -117,9 +121,6 @@
 
 
   <script type="text/javascript">
-    // // USER NAME
-    // var username = prompt("PSEUDO");
-    // username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
 
 
     // CHOICE USER
@@ -134,8 +135,8 @@
       var pfc = ["stone", "paper", "cisor"]
       var choiceComputer = Math.floor(Math.random() * 3);
       choiceComputer = pfc[choiceComputer]
-      console.log(choiceComputer);
-      console.log(choice);
+      console.log("computer: "+choiceComputer);
+      console.log("user: " +choice);
       comparer(choice, choiceComputer);
     }
 
@@ -267,14 +268,17 @@
 
       document.getElementById("computerBody").src="img/computer.gif";
       document.getElementById("computerBodyFig").style.right=15+ "%";
-
-
+      document.getElementById("userBody").src="img/zero.gif";
     }
 
 
     // WELCOME
+    // // USER NAME
+    var username = prompt("PSEUDO");
+    username.length<9 ? document.getElementById("username").innerHTML= username.toUpperCase(): user =prompt("Déconne pas")
     document.getElementById("citBender").innerHTML=username +".. c'est mérovingien ?..";
     speak();
+
 
 
     // EQUAL
@@ -300,14 +304,22 @@
       // Point for computer
       pointForComputer();
 
+
       // If total bender win
       if(userLifeBar==0){
         replayButton();
+        document.getElementById("userBody").src="img/zeroloose.gif";
 
         document.getElementById("computerBody").src="img/computerwin.gif";
         document.getElementById("citBender").innerHTML= "J'ai rien vue passer HAhahaaa";
       }
+      else {
+        //punchanime
+        if (computerLifeBar!==0 && userLifeBar !==0) {
+          benderPunchUser();
+        }
 
+      }
     }
 
     // BENDER LOOSE
@@ -326,6 +338,7 @@
       // Point for user
       pointForUser();
 
+
       // Last chance
       if(computerLifeBar==20){
       }
@@ -335,19 +348,24 @@
         leave();
         replayButton();
       }
+      //punchanime
+      else {
+        userPunchBender();
+      }
     }
 
 
     // LEAVE
     var moving=15;
     function leave(){
+      speak();
+      document.getElementById("citBender").innerHTML= "J'me casse!";
       document.getElementById("computerBody").src="img/computerloose1.gif";
-      var myVar = setInterval(function(){ myTimer() }, 100);
+      var benderLeave = setInterval(function(){ myTimer() }, 100);
 
       function myTimer(){
-        console.log("interval moving");
         if(userLifeBar==100 && computerLifeBar==100){
-          clearInterval(myVar);
+          clearInterval(benderLeave);
           moving =15;
         }
         else if(moving !== -15){
@@ -355,8 +373,50 @@
         document.getElementById("computerBodyFig").style.right=moving + "%";
         }
         else {
-          clearInterval(myVar);
-          moving =15;
+          clearInterval(benderLeave);
+          moving = 15;
+        }
+      }
+    }
+
+    // FIGHT ND PUNCH
+    function userPunchBender(){
+      glassBall();
+      document.getElementById("computerBody").src = "img/computerkicked.gif";
+      document.getElementById("userBody").src = "img/zerofight.gif";
+      document.getElementById("userBody").style.heigth = "190%";
+      document.getElementById("userBody").style.width = "150%";
+      setTimeout(function(){
+        document.getElementById("userBody").style.heigth = "100%";
+        document.getElementById("userBody").style.width = "100%";
+        document.getElementById("userBody").src = "img/zero.gif";
+        document.getElementById("computerBody").src = "img/computer.gif";
+
+      },1000);
+    }
+    function benderPunchUser(){
+      document.getElementById("computerBody").src = "img/computer.gif";
+      document.getElementById("userBody").src = "img/zerokicked.gif";
+      setTimeout(function(){
+        document.getElementById("userBody").src = "img/zero.gif";
+        document.getElementById("computerBody").src = "img/computer.gif";
+      },1000);
+    }
+
+
+    var ballPos = 55;
+    function glassBall(){
+      document.getElementById("ball").style.display = "block";
+      var ballMove = setInterval(ballMouving, 12);
+      function ballMouving(){
+        if(ballPos == 0){
+        clearInterval(ballMove);
+        ballPos = 55;
+        document.getElementById("ball").style.display = "none";
+        }
+        else {
+        ballPos --;
+        document.getElementById("ballfig").style.right=ballPos + "%";
         }
       }
     }

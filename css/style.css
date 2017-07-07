@@ -137,12 +137,22 @@ html * {
     display: none;
     margin-bottom: 0;
   }
-  #main .fighter .computerAndCit .computerbody {
-    position: absolute;
-    right: 200px;
-  }
   #main .fighter .computerAndCit #computerBodyFig {
+    position: absolute;
     right: 15%;
+  }
+  #main .fighter .computerAndCit #computerBodyFig #computerbody {
+    background-color: black;
+  }
+  #main .fighter .computerAndCit #ballfig {
+    position: absolute;
+    z-index: 4;
+    right: 55%;
+    bottom: 120px;
+    transform: scasleX(90px);
+  }
+  #main .fighter .computerAndCit #ballfig #ball {
+    display: none;
   }
 }
 @keyframes brillance {

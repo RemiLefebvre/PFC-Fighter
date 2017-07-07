@@ -111,6 +111,9 @@ html {
       position: absolute;
       bottom: 20px;
       width: 100%;
+      .fighteffect{
+
+      }
 
       .userAndChoose {
         .choose {
@@ -163,12 +166,24 @@ html {
           margin-bottom: 0;
         }
 
-        .computerbody {
-          position: absolute;
-          right: 200px;
-        }
         #computerBodyFig{
+          position: absolute;
           right: 15%;
+          #computerbody{
+            background-color: black;
+
+          }
+        }
+        #ballfig{
+          position: absolute;
+          z-index: 4;
+          right: 55%;
+          bottom: 120px;
+          transform: scasleX(90px);
+          #ball{
+            display: none;
+
+          }
         }
       }
     }
